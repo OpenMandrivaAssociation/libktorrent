@@ -10,11 +10,9 @@ Url: http://ktorrent.org/
 Source0: http://ktorrent.org/downloads/%{version}/%{name}-%{version}%{rev}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: gmp-devel
-BuildRequires: kdepimlibs4-devel
-BuildRequires: kdebase4-workspace-devel
+BuildRequires: kdelibs4-devel
 BuildRequires: qca2-devel >= 2.0.1
 BuildRequires: boost-devel
-BuildRequires: taglib-devel
 
 %description
 KTorrent is a BitTorrent program for KDE. It's main features are:
