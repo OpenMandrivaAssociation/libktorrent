@@ -1,6 +1,6 @@
 Name: libktorrent
 Version: 1.0.2
-Release: %mkrel 1
+Release: %mkrel 2
 Summary: BitTorrent program for KDE
 Group: Networking/File transfer
 License: GPLv2+
@@ -22,12 +22,27 @@ KTorrent is a BitTorrent program for KDE. It's main features are:
 
 #-------------------------------------------------------------------------
 
+%package common
+Summary:    Common files of libktorrent
+Group:      System/Libraries
+Conflicts:  %{_lib}ktorrent1 < 1.0.2 libktorrent1 < 1.0.2
+
+%description common
+Common files for libktorrent, used by KTorrent, a BitTorrent program for
+KDE.
+
+%files common -f %name.lang
+%defattr(-,root,root)
+
+#-------------------------------------------------------------------------
+
 %define ktorrent_major 2
 %define libktorrent %mklibname ktorrent %ktorrent_major
 
 %package -n %libktorrent
 Summary:    Ktorrent libbrary
 Group:      System/Libraries
+Requires:   libktorrent-common >= %{version}
 
 %description -n %libktorrent
 KTorrent is a BitTorrent program for KDE. It's main features are:
@@ -37,7 +52,7 @@ KTorrent is a BitTorrent program for KDE. It's main features are:
  o Internet searching using  The Bittorrent website's search engine
  o UDP Trackers
 
-%files -n %libktorrent -f %name.lang 
+%files -n %libktorrent
 %defattr(-,root,root)
 %_kde_libdir/libktorrent.so.%{ktorrent_major}*
 
