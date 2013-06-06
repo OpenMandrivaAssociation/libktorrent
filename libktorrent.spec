@@ -3,13 +3,13 @@
 %define devname %mklibname ktorrent -d
 
 Name:		libktorrent
-Version:	1.3.0
+Version:	1.3.1
 Release:	2
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://ktorrent.org/
-Source0:	http://ktorrent.org/downloads/4.2.1/%{name}-%{version}.tar.bz2
+Source0:	http://ktorrent.org/downloads/4.3.1/%{name}-%{version}.tar.bz2
 BuildRequires:	boost-devel
 BuildRequires:	gmp-devel
 BuildRequires:	kdelibs4-devel
@@ -49,8 +49,8 @@ KTorrent is a BitTorrent program for KDE. It's main features are:
 Summary:	Ktorrent plugin devel headers
 Group:		Networking/File transfer
 Requires:	%{libname} = %{version}-%{release}
-Provides:	%{name} = %{version}-%{release}
-Obsoletes:	libktorrent-devel < 1.3.0-2
+Provides:	%{name}-devel = %{version}-%{release}
+Obsoletes:	libktorrent-devel < 1.3.1-2
 
 %description -n %{devname}
 Ktorrent plugin devel headers.
