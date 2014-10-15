@@ -59,6 +59,9 @@ Ktorrent plugin devel headers.
 %setup -q
 
 %build
+# our qca pkg config is in a non standard path due to qt5/4 split
+export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
+
 %cmake_kde4
 %make
 
