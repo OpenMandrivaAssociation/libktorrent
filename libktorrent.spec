@@ -4,7 +4,7 @@
 
 Name:		libktorrent
 Version:	1.3.1
-Release:	12
+Release:	13
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
 License:	GPLv2+
