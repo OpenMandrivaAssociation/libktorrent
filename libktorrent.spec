@@ -1,20 +1,30 @@
-%define major	5
+%define major	6
 %define libname %mklibname ktorrent %{major}
 %define devname %mklibname ktorrent -d
 
 Name:		libktorrent
-Version:	1.3.1
-Release:	14
+Version:	2.0
+Release:	1
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://ktorrent.org/
-Source0:	http://ktorrent.org/downloads/4.3.1/%{name}-%{version}.tar.bz2
+Source0:	http://download.kde.org/stable/ktorrent/5.0/%{name}-%{version}.tar.xz
 BuildRequires:	boost-devel
 BuildRequires:	gmp-devel
-BuildRequires:	kdelibs4-devel
+BuildRequires:	extra-cmake-modules
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt5Network)
+BuildRequires:	pkgconfig(Qt5Xml)
+BuildRequires:	pkgconfig(Qt5Test)
+BuildRequires:	cmake(KF5I18n)
+BuildRequires:	cmake(KF5Crash)
+BuildRequires:	cmake(KF5KIO)
+BuildRequires:	cmake(KF5Archive)
 BuildRequires:	pkgconfig(libgcrypt)
-BuildRequires:	pkgconfig(qca2)
+BuildRequires:	pkgconfig(qca2-qt5)
 
 %description
 KTorrent is a BitTorrent program for KDE. It's main features are:
@@ -62,7 +72,16 @@ Ktorrent plugin devel headers.
 # our qca pkg config is in a non standard path due to qt5/4 split
 export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
 
-%cmake_kde4
+# Gentoo workaround because gmp.h in MULTILIB_WRAPPED_HEADERS is breaking this
+sed -i -e "/^find_package/ s/\"\${LibGMP_MIN_VERSION}\" //" \
+	CMakeLists.txt
+sed -i -e "/^find_dependency/ s/ \"@LibGMP_MIN_VERSION@\"//" \
+	LibKTorrentConfig.cmake.in
+
+# do not build non-installed example binary
+sed -i -e "/add_subdirectory(examples)/d" CMakeLists.txt
+
+%cmake_kde5
 %make
 
 %install
@@ -77,6 +96,6 @@ export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
 
 %files -n %{devname}
 %{_kde_includedir}/*
-%{_kde_appsdir}/cmake/*/*
+%{_kde_libdir}/cmake/LibKTorrent/
 %{_kde_libdir}/*.so
 
