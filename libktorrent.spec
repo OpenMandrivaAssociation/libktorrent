@@ -4,7 +4,7 @@
 
 Name:		libktorrent
 Version:	2.0
-Release:	1
+Release:	1.1
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -82,10 +82,10 @@ sed -i -e "/^find_dependency/ s/ \"@LibGMP_MIN_VERSION@\"//" \
 sed -i -e "/add_subdirectory(examples)/d" CMakeLists.txt
 
 %cmake_kde5
-%make
+%ninja
 
 %install
-%makeinstall_std -C build
+%ninja_install -C build
 
 %find_lang %{name}
 
