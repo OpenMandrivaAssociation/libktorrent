@@ -92,10 +92,10 @@ sed -i -e "/add_subdirectory(examples)/d" CMakeLists.txt
 %files common -f %{name}.lang
 
 %files -n %{libname}
-%{_kde_libdir}/libktorrent.so.%{major}*
+%{_kde5_libdir}/libktorrent.so.%{major}*
 
 %files -n %{devname}
-%{_kde_includedir}/*
-%{_kde_libdir}/cmake/LibKTorrent/
-%{_kde_libdir}/*.so
+%{_kde5_includedir}/*
+%{_kde5_libdir}/cmake/LibKTorrent/
+%{_kde5_libdir}/*.so
 
