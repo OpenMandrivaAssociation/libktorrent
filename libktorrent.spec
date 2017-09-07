@@ -1,9 +1,9 @@
-%define major	6
+%define major 6
 %define libname %mklibname ktorrent %{major}
 %define devname %mklibname ktorrent -d
 
 Name:		libktorrent
-Version:	2.0.1
+Version:	2.1
 Release:	1
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
@@ -12,7 +12,7 @@ Url:		http://ktorrent.org/
 Source0:	http://download.kde.org/stable/ktorrent/5.0/%{name}-%{version}.tar.xz
 BuildRequires:	boost-devel
 BuildRequires:	gmp-devel
-BuildRequires:	extra-cmake-modules
+BuildRequires:	cmake(ECM)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5Widgets)
@@ -98,4 +98,3 @@ sed -i -e "/add_subdirectory(examples)/d" CMakeLists.txt
 %{_kde5_includedir}/*
 %{_kde5_libdir}/cmake/LibKTorrent/
 %{_kde5_libdir}/*.so
-
