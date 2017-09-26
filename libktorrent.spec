@@ -76,7 +76,7 @@ export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
 sed -i -e "/^find_package/ s/\"\${LibGMP_MIN_VERSION}\" //" \
 	CMakeLists.txt
 sed -i -e "/^find_dependency/ s/ \"@LibGMP_MIN_VERSION@\"//" \
-	LibKTorrentConfig.cmake.in
+	KF5TorrentConfig.cmake.in
 
 # do not build non-installed example binary
 sed -i -e "/add_subdirectory(examples)/d" CMakeLists.txt
