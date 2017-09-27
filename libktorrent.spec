@@ -87,9 +87,9 @@ sed -i -e "/add_subdirectory(examples)/d" CMakeLists.txt
 %install
 %ninja_install -C build
 
-%find_lang %{name}
+%find_lang %{name}5
 
-%files common -f %{name}.lang
+%files common -f %{name}5.lang
 
 %files -n %{libname}
 %{_kde5_libdir}/libktorrent.so.%{major}*
