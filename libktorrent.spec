@@ -46,8 +46,9 @@ KDE.
 Summary:	Ktorrent libbrary
 Group:		System/Libraries
 Requires:	%{name}-common >= %{EVRD}
-%rename	%{mklibname libtorrent 6}
-Conflicts:	%{mklibname libtorrent 6} < 2.1
+Obsoletes:	%{mklibname libtorrent 6} < 2.1-1
+Provides:	%{mklibname libtorrent 6} <= 2.1-1
+Conflicts:	%{mklibname libtorrent 6} < 2.1-1
 
 %description -n %{libname}
 KTorrent is a BitTorrent program for KDE. It's main features are:
