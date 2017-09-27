@@ -61,7 +61,7 @@ KTorrent is a BitTorrent program for KDE. It's main features are:
 %package -n %{devname}
 Summary:	Ktorrent plugin devel headers
 Group:		Networking/File transfer
-Requires:	%{libname} = %{EVRD
+Requires:	%{libname} = %{EVRD}
 Provides:	%{name}-devel = %{EVRD}
 Obsoletes:	%{_lib}ktorrent-devel < 2.1-1
 Conflicts:	%{mklibname libtorrent -d} < 2.1
