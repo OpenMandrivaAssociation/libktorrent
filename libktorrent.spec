@@ -1,6 +1,6 @@
 %define major 6
-%define libname %mklibname ktorrent %{major}
-%define devname %mklibname ktorrent -d
+%define libname %mklibname KF5Torrent %{major}
+%define devname %mklibname KF5Torrent -d
 
 Name:		libktorrent
 Version:	2.1
@@ -45,7 +45,9 @@ KDE.
 %package -n %{libname}
 Summary:	Ktorrent libbrary
 Group:		System/Libraries
-Requires:	%{name}-common >= %{version}-%{release}
+Requires:	%{name}-common >= %{EVRD}
+%rename	%{mklibname libtorrent 6}
+Conflicts:	%{mklibname libtorrent 6} < 2.1
 
 %description -n %{libname}
 KTorrent is a BitTorrent program for KDE. It's main features are:
@@ -58,9 +60,10 @@ KTorrent is a BitTorrent program for KDE. It's main features are:
 %package -n %{devname}
 Summary:	Ktorrent plugin devel headers
 Group:		Networking/File transfer
-Requires:	%{libname} = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
-Obsoletes:	libktorrent-devel < 1.3.1-2
+Requires:	%{libname} = %{EVRD
+Provides:	%{name}-devel = %{EVRD}
+Obsoletes:	%{_lib}ktorrent-devel < 2.1-1
+Conflicts:	%{mklibname libtorrent -d} < 2.1
 
 %description -n %{devname}
 Ktorrent plugin devel headers.
@@ -92,9 +95,9 @@ sed -i -e "/add_subdirectory(examples)/d" CMakeLists.txt
 %files common -f %{name}5.lang
 
 %files -n %{libname}
-%{_kde5_libdir}/libktorrent.so.%{major}*
+%{_kde5_libdir}/libKF5Torrent.so.%{major}*
 
 %files -n %{devname}
 %{_kde5_includedir}/*
-%{_kde5_libdir}/cmake/LibKTorrent/
+%{_kde5_libdir}/cmake/KF5Torrent/
 %{_kde5_libdir}/*.so
