@@ -1,10 +1,10 @@
-%define major	6
-%define libname %mklibname ktorrent %{major}
-%define devname %mklibname ktorrent -d
+%define major 6
+%define libname %mklibname KF5Torrent %{major}
+%define devname %mklibname KF5Torrent -d
 
 Name:		libktorrent
-Version:	2.0.1
-Release:	1
+Version:	2.1
+Release:	2
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -12,7 +12,7 @@ Url:		http://ktorrent.org/
 Source0:	http://download.kde.org/stable/ktorrent/5.0/%{name}-%{version}.tar.xz
 BuildRequires:	boost-devel
 BuildRequires:	gmp-devel
-BuildRequires:	extra-cmake-modules
+BuildRequires:	cmake(ECM)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5Widgets)
@@ -45,7 +45,10 @@ KDE.
 %package -n %{libname}
 Summary:	Ktorrent libbrary
 Group:		System/Libraries
-Requires:	%{name}-common >= %{version}-%{release}
+Requires:	%{name}-common >= %{EVRD}
+Obsoletes:	%{mklibname libtorrent 6} < 2.1-1
+Provides:	%{mklibname libtorrent 6} = 2.1-1
+Conflicts:	%{mklibname libtorrent 6} < 2.1-1
 
 %description -n %{libname}
 KTorrent is a BitTorrent program for KDE. It's main features are:
@@ -58,9 +61,10 @@ KTorrent is a BitTorrent program for KDE. It's main features are:
 %package -n %{devname}
 Summary:	Ktorrent plugin devel headers
 Group:		Networking/File transfer
-Requires:	%{libname} = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
-Obsoletes:	libktorrent-devel < 1.3.1-2
+Requires:	%{libname} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
+Obsoletes:	%{_lib}ktorrent-devel < 2.1-1
+Conflicts:	%{mklibname libtorrent -d} < 2.1
 
 %description -n %{devname}
 Ktorrent plugin devel headers.
@@ -76,7 +80,7 @@ export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
 sed -i -e "/^find_package/ s/\"\${LibGMP_MIN_VERSION}\" //" \
 	CMakeLists.txt
 sed -i -e "/^find_dependency/ s/ \"@LibGMP_MIN_VERSION@\"//" \
-	LibKTorrentConfig.cmake.in
+	KF5TorrentConfig.cmake.in
 
 # do not build non-installed example binary
 sed -i -e "/add_subdirectory(examples)/d" CMakeLists.txt
@@ -87,15 +91,14 @@ sed -i -e "/add_subdirectory(examples)/d" CMakeLists.txt
 %install
 %ninja_install -C build
 
-%find_lang %{name}
+%find_lang %{name}5
 
-%files common -f %{name}.lang
+%files common -f %{name}5.lang
 
 %files -n %{libname}
-%{_kde5_libdir}/libktorrent.so.%{major}*
+%{_kde5_libdir}/libKF5Torrent.so.%{major}*
 
 %files -n %{devname}
 %{_kde5_includedir}/*
-%{_kde5_libdir}/cmake/LibKTorrent/
+%{_kde5_libdir}/cmake/KF5Torrent/
 %{_kde5_libdir}/*.so
-
