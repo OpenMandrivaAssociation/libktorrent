@@ -4,7 +4,7 @@
 
 Name:		libktorrent
 Version:	2.1
-Release:	1
+Release:	2
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -47,7 +47,7 @@ Summary:	Ktorrent libbrary
 Group:		System/Libraries
 Requires:	%{name}-common >= %{EVRD}
 Obsoletes:	%{mklibname libtorrent 6} < 2.1-1
-Provides:	%{mklibname libtorrent 6} <= 2.1-1
+Provides:	%{mklibname libtorrent 6} = 2.1-1
 Conflicts:	%{mklibname libtorrent 6} < 2.1-1
 
 %description -n %{libname}
