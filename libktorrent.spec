@@ -4,12 +4,12 @@
 
 Name:		libktorrent
 Version:	2.1
-Release:	2
+Release:	3
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://ktorrent.org/
-Source0:	http://download.kde.org/stable/ktorrent/5.0/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/stable/ktorrent/5.%(echo %{version}|cut -d. -f2)/%{name}-%{version}.tar.xz
 BuildRequires:	boost-devel
 BuildRequires:	gmp-devel
 BuildRequires:	cmake(ECM)
