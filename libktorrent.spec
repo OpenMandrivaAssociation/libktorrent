@@ -4,7 +4,7 @@
 
 Name:		libktorrent
 Version:	2.1
-Release:	3
+Release:	4
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -65,6 +65,7 @@ Requires:	%{libname} = %{EVRD}
 Provides:	%{name}-devel = %{EVRD}
 Obsoletes:	%{_lib}ktorrent-devel < 2.1-1
 Conflicts:	%{mklibname libtorrent -d} < 2.1
+Requires:	gmp-devel
 
 %description -n %{devname}
 Ktorrent plugin devel headers.
