@@ -3,8 +3,8 @@
 %define devname %mklibname KF5Torrent -d
 
 Name:		libktorrent
-Version:	2.1
-Release:	7
+Version:	2.2.0
+Release:	1
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
 License:	GPLv2+
