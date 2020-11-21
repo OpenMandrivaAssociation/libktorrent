@@ -1,15 +1,16 @@
 %define major 6
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 %define libname %mklibname KF5Torrent %{major}
 %define devname %mklibname KF5Torrent -d
 
 Name:		libktorrent
-Version:	2.2.0
+Version:	20.11.80
 Release:	1
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://ktorrent.org/
-Source0:	http://download.kde.org/stable/ktorrent/5.%(echo %{version}|cut -d. -f2)/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:	boost-devel
 BuildRequires:	gmp-devel
 BuildRequires:	cmake(ECM)
@@ -105,6 +106,7 @@ sed -i -e "/add_subdirectory(examples)/d" CMakeLists.txt
 
 %files -n %{libname}
 %{_kde5_libdir}/libKF5Torrent.so.%{major}*
+%{_kde5_libdir}/libKF5Torrent.so.20*
 
 %files -n %{devname}
 %{_kde5_includedir}/*
