@@ -4,7 +4,7 @@
 %define devname %mklibname KF5Torrent -d
 
 Name:		libktorrent
-Version:	21.12.2
+Version:	22.03.80
 Release:	1
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
@@ -106,7 +106,7 @@ sed -i -e "/add_subdirectory(examples)/d" CMakeLists.txt
 
 %files -n %{libname}
 %{_kde5_libdir}/libKF5Torrent.so.%{major}*
-%{_kde5_libdir}/libKF5Torrent.so.%(echo %{version}|¢ut -d. -f1)*
+%{_kde5_libdir}/libKF5Torrent.so.%(echo %{version}|cut -d. -f1)*
 
 %files -n %{devname}
 %{_kde5_includedir}/*
