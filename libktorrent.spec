@@ -5,7 +5,7 @@
 
 Name:		libktorrent
 Version:	22.12.3
-Release:	1
+Release:	2
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
 License:	GPLv2+
