@@ -1,16 +1,23 @@
+%define git 20240218
+%define gitbranch release/24.02
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 %define major 6
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 %define libname %mklibname KTorrent6
 %define devname %mklibname KTorrent6 -d
 
 Name:		plasma6-libktorrent
-Version:	24.01.95
-Release:	1
+Version:	24.01.96
+Release:	%{?git:0.%{git}.}1
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
 License:	GPLv2+
 Url:		http://ktorrent.org/
+%if 0%{?git:1}
+Source0:	https://invent.kde.org/network/libktorrent/-/archive/%{gitbranch}/libktorrent-%{gitbranchd}.tar.bz2#/libktorrent-%{git}.tar.bz2
+%else
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/libktorrent-%{version}.tar.xz
+%endif
 BuildRequires:	boost-devel
 BuildRequires:	gmp-devel
 BuildRequires:	cmake(ECM)
@@ -79,7 +86,7 @@ Requires:	pkgconfig(libgcrypt)
 Ktorrent plugin devel headers.
 
 %prep
-%autosetup -p1 -n libktorrent-%{?git:master}%{!?git:%{version}}
+%autosetup -p1 -n libktorrent-%{?git:%{gitbranchd}}%{!?git:%{version}}
 
 %build
 # do not build non-installed example binary
