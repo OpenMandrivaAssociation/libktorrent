@@ -7,7 +7,7 @@
 %define devname %mklibname KTorrent6 -d
 
 Name:		plasma6-libktorrent
-Version:	24.02.1
+Version:	24.02.2
 Release:	%{?git:0.%{git}.}1
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
