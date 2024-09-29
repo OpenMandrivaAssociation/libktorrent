@@ -5,7 +5,7 @@
 
 Name:		libktorrent
 Version:	23.08.5
-Release:	1
+Release:	2
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
 License:	GPLv2+
