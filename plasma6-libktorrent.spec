@@ -12,7 +12,7 @@ Release:	%{?git:0.%{git}.}1
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
 License:	GPLv2+
-Url:		http://ktorrent.org/
+Url:		https://ktorrent.org/
 %if 0%{?git:1}
 Source0:	https://invent.kde.org/network/libktorrent/-/archive/%{gitbranch}/libktorrent-%{gitbranchd}.tar.bz2#/libktorrent-%{git}.tar.bz2
 %else
