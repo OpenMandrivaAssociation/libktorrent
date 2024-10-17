@@ -9,7 +9,7 @@ Release:	2
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
 License:	GPLv2+
-Url:		http://ktorrent.org/
+Url:		https://ktorrent.org/
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:	boost-devel
 BuildRequires:	gmp-devel
