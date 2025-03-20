@@ -8,7 +8,7 @@
 
 Name:		plasma6-libktorrent
 Version:	24.12.3
-Release:	%{?git:0.%{git}.}1
+Release:	%{?git:0.%{git}.}2
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
 License:	GPLv2+
