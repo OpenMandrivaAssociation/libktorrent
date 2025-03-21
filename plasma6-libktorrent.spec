@@ -34,6 +34,9 @@ BuildRequires:	cmake(KF6Archive)
 BuildRequires:	pkgconfig(libgcrypt)
 BuildRequires:	cmake(Qca-qt6)
 
+%patchlist
+libktorrent-24.12.3-compile.patch
+
 %description
 KTorrent is a BitTorrent program for KDE. It's main features are:
  o Downloads torrent files
