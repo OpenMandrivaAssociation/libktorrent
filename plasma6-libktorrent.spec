@@ -7,8 +7,8 @@
 %define devname %mklibname KTorrent6 -d
 
 Name:		plasma6-libktorrent
-Version:	24.12.3
-Release:	%{?git:0.%{git}.}2
+Version:	25.04.0
+Release:	%{?git:0.%{git}.}1
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
 License:	GPLv2+
@@ -35,7 +35,6 @@ BuildRequires:	pkgconfig(libgcrypt)
 BuildRequires:	cmake(Qca-qt6)
 
 %patchlist
-libktorrent-24.12.3-compile.patch
 
 %description
 KTorrent is a BitTorrent program for KDE. It's main features are:
