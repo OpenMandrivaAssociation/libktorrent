@@ -7,7 +7,7 @@
 %define devname %mklibname KTorrent6 -d
 
 Name:		libktorrent
-Version:	25.04.0
+Version:	25.04.3
 Release:	%{?git:0.%{git}.}1
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
@@ -33,6 +33,11 @@ BuildRequires:	cmake(KF6KIO)
 BuildRequires:	cmake(KF6Archive)
 BuildRequires:	pkgconfig(libgcrypt)
 BuildRequires:	cmake(Qca-qt6)
+
+%rename plasma6-libktorrent
+
+BuildSystem:	cmake
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 
 %patchlist
 
@@ -87,24 +92,11 @@ Requires:	pkgconfig(libgcrypt)
 %description -n %{devname}
 Ktorrent plugin devel headers.
 
-%prep
-%autosetup -p1 -n libktorrent-%{?git:%{gitbranchd}}%{!?git:%{version}}
-
-%build
+%build -p
 # do not build non-installed example binary
 sed -i -e "/add_subdirectory(examples)/d" CMakeLists.txt
 
-%cmake \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-%ninja
-
-%install
-%ninja_install -C build
-
-%find_lang libktorrent6
-
-%files common -f libktorrent6.lang
+%files common -f %{name}.lang
 
 %files -n %{libname}
 %{_libdir}/libKTorrent6.so.%{major}*
