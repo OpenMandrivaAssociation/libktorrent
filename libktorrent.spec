@@ -52,6 +52,7 @@ KTorrent is a BitTorrent program for KDE. It's main features are:
 %package common
 Summary:	Common files of libktorrent
 Group:		System/Libraries
+%rename plasma6-libktorrent-common
 
 %description common
 Common files for libktorrent, used by KTorrent, a BitTorrent program for
