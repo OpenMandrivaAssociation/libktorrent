@@ -7,7 +7,7 @@
 %define devname %mklibname KTorrent6 -d
 
 Name:		libktorrent
-Version:	25.08.2
+Version:	25.08.3
 Release:	%{?git:0.%{git}.}1
 Summary:	BitTorrent program for KDE
 Group:		Networking/File transfer
